@@ -11,6 +11,7 @@ const {
   SLACK_COOKIE,
   SLACK_TOKEN,
   SLACK_DISPLAY_NAME,
+  SLACK_REAL_NAME,
   CHECK_INTERVAL = '1min',
 } = process.env;
 
@@ -40,14 +41,20 @@ async function setProfile(profile) {
 
 async function resetDisplayName() {
   const profile = await getProfile();
-  if (profile.display_name !== SLACK_DISPLAY_NAME) {
-    await setProfile({
-      display_name: SLACK_DISPLAY_NAME,
-    });
+  const newProfile = {};
+  if (!!SLACK_DISPLAY_NAME && profile.display_name !== SLACK_DISPLAY_NAME) {
+    newProfile.display_name = SLACK_DISPLAY_NAME;
+  }
+  if (!!SLACK_REAL_NAME && profile.real_name !== SLACK_REAL_NAME) {
+    newProfile.real_name = SLACK_REAL_NAME;
+  }
+  if (Object.keys(newProfile).length !== 0) {
+    await setProfile(newProfile);
     console.log('display_name has been reset');
   } else {
     console.log('display_name not changed');
   }
+
 }
 
 resetDisplayName().catch(console.error);
