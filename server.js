@@ -52,7 +52,7 @@ async function resetDisplayName() {
     await setProfile(newProfile);
     console.log(`${Object.keys(newProfile).join(',')} has been reset`);
   } else {
-    console.log('display_name not changed');
+    console.log('nothing changed');
   }
 
 }
