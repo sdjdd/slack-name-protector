@@ -18,7 +18,7 @@ docker-compose up -d
 
 ## Parameters
 
-* CHECK_INTERVAL: required, slack profile checking interval, default to '1min'
+* CHECK_INTERVAL: optional, slack profile checking interval, default to '1min'
 * SLACK_API_BASE_URL: required, slack api base url, default to "https://slack.com/api"
 * SLACK_COOKIE: required, your slack cookie, default empty
 * SLACK_TOKEN: required, your slack token, default empty
