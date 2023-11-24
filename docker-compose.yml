@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+
+  slack-name-protector:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      CHECK_INTERVAL: "1min"
+      SLACK_API_BASE_URL: "https://slack.com/api"
+      SLACK_COOKIE: >-
+        "your slack cookie very long"
+      SLACK_TOKEN: "your slack token"
+      SLACK_DISPLAY_NAME: "your slack display name"
+      SLACK_REAL_NAME: "your slack real name"
